@@ -4,6 +4,8 @@ import { PiHouseBold, PiUserFill} from "react-icons/pi";
 import { MdSettings, MdMenu, MdClose} from "react-icons/md";
 import TelaLed from "./TelaLed";
 import BoiaStatus from "./BoiaStatus"
+import DHT from "./DHT";
+import SensorSolo from "./SensorSolo";
 export default function Principal() {
     const [menuAberto, setMenuAberto] = useState(false);
     return (
@@ -25,6 +27,12 @@ export default function Principal() {
                     <Link to="/BoiaStatus" onClick={() => setMenuAberto(false)} className="flex items-center gap-4 p-2 rounded hover:bg-gray-700">
                     <PiHouseBold /> <span>Status Boia</span>
                     </Link>
+                    <Link to="/DHT" onClick={() => setMenuAberto(false)} className="flex items-center gap-4 p-2 rounded hover:bg-gray-700">
+                    <PiHouseBold /> <span>Sensor DHT</span>
+                    </Link>
+                    <Link to="/sensorSolo" onClick={() => setMenuAberto(false)} className="flex items-center gap-4 p-2 rounded hover:bg-gray-700">
+                    <PiHouseBold /> <span>Sensor Solo</span>
+                    </Link>      
                 </nav>
             </section>
 
@@ -40,6 +48,8 @@ export default function Principal() {
                     <Routes>
                         <Route path="/telaled" element={<TelaLed />} />
                         <Route path="/BoiaStatus" element={<BoiaStatus />} />
+                        <Route path="/DHT" element={<DHT />} />
+                        <Route path="/sensorSolo" element={<SensorSolo />} />
                     </Routes>
                 </main>
             </section>

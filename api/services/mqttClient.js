@@ -10,6 +10,10 @@ const MQTT_PASSWORD= 'TesteSenai1'
 const TOPICO_STATUS = 'aulaLed/30/status'
 const TOPICO_COMANDO_LED = 'aulaLed/30/estadoLed'
 const STATUS_BOIA = 'projeto/30/statusBoia'
+const TEMPERATURA = 'projeto/30/temperatura'
+const SENSOR_SOLO = 'projeto/30/SENSOR_SOLO'
+const CONDICAO_SOLO = 'projeto/30/CONDICAO_SOLO'
+const UMIDADE = 'projeto/30/umidade'
 let mqttClient;
 let subscriptions = {};
 
@@ -42,6 +46,26 @@ function conectarMqtt() {
                 console.log(`inscrito no topico ${STATUS_BOIA}`);
             }
         });
+        mqttClient.subscribe(TEMPERATURA, (err) => {
+            if (!err) {
+                console.log(`inscrito no topico ${TEMPERATURA}`);
+            }
+        });
+        mqttClient.subscribe(UMIDADE, (err) => {
+            if (!err) {
+                console.log(`inscrito no topico ${UMIDADE}`);
+            }
+        });
+        mqttClient.subscribe(SENSOR_SOLO, (err) => {
+            if (!err) {
+                console.log(`inscrito no topico ${SENSOR_SOLO}`);
+            }
+        });
+        mqttClient.subscribe(CONDICAO_SOLO, (err) => {
+            if (!err) {
+                console.log(`inscrito no topico ${CONDICAO_SOLO}`);
+            }
+        });
     });
     mqttClient.on('message', (topic, message) => {
         // Verificar se existe um tópico na lista de subscriptions (assinaturas)
@@ -68,4 +92,4 @@ function publicar(topic, message) {
 }
 
 conectarMqtt()
-export {onMessage, TOPICO_STATUS, TOPICO_COMANDO_LED, publicar, STATUS_BOIA}
+export {onMessage, TOPICO_STATUS, TOPICO_COMANDO_LED, publicar, STATUS_BOIA, TEMPERATURA, SENSOR_SOLO, CONDICAO_SOLO, UMIDADE}
